@@ -15,6 +15,10 @@ view: orders {
 
   dimension: status {
     type: string
+    action: {
+      label: "Test action - dimension"
+      url: "https://example.com/nosuchresource/?value={{ value }}&rendered={{ rendered }}"
+    }
     sql: ${TABLE}.status ;;
   }
 
