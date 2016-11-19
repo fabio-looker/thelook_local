@@ -7,6 +7,11 @@ view: events {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: id_plus_two {
+    type: number
+    sql: (${TABLE}.id+2) ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [time, date, week, month]
