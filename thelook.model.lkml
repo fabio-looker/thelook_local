@@ -23,6 +23,8 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  access_filter_fields: [products.department]
+
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
