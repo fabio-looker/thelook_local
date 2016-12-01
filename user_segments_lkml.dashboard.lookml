@@ -21,8 +21,8 @@
     measures: [users.count]
     # filters:
     #   users.state: ''
-    # listen:
-    #   state: users.state
+    listen:
+       state: users.state
     sorts: [users.count desc]
     limit: '500'
     column_limit: '50'
