@@ -6,13 +6,13 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-explore: events {
-  join: users {
-    type: left_outer
-    sql_on: ${events.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
+# explore: events {
+#   join: users {
+#     type: left_outer
+#     sql_on: ${events.user_id} = ${users.id} ;;
+#     relationship: many_to_one
+#   }
+# }
 
 explore: inventory_items {
   join: products {
@@ -24,6 +24,7 @@ explore: inventory_items {
 
 explore: order_items {
   access_filter_fields: [products.department]
+  #hidden: yes
 
   join: orders {
     type: left_outer
@@ -56,6 +57,11 @@ explore: orders {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  join: orders_aggregated_order_items {
+    type: left_outer
+    sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
+    relationship: one_to_one
+  }
 }
 
 explore: products {}
@@ -63,10 +69,16 @@ explore: products {}
 explore: schema_migrations {}
 
 explore: t1 {
+  label: "Transactions"
   join: orders {
     type: left_outer
     sql_on: ${t1.order_id} = ${orders.id} ;;
     relationship: many_to_one
+  }
+  join: orders_aggregated_order_items {
+    type: left_outer
+    sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
+    relationship: one_to_one
   }
 
   join: inventory_items {
@@ -94,8 +106,19 @@ explore: user_data {
     sql_on: ${user_data.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  join:  orders {
+    type: left_outer
+    sql_on: ${orders.user_id} =${users.id} ;;
+    relationship: one_to_many
+  }
+  join: orders_aggregated_order_items {
+    type: left_outer
+    sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
+    relationship: one_to_one
+  }
 }
 
-explore: users {}
+ explore: users {
+    hidden:  yes
 
-explore: users_nn {}
+ }

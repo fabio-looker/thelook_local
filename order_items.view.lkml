@@ -25,10 +25,15 @@ view: order_items {
     sql: ${TABLE}.returned_at ;;
   }
 
-  dimension: sale_price {
-    type: number
-    sql: ${TABLE}.sale_price ;;
+  dimension: sale_price_tier {
+    type: tier
+    style: integer
+    value_format_name: usd_0
+    tiers: [0,500,1000,2000,4000,8000,16000,32000]
+    sql: ${TABLE}.sale_price;;
   }
+
+
 
   measure: count {
     type: count

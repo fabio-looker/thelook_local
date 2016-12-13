@@ -4,11 +4,11 @@
   tile_size: 100
 
 
-  filters:
-   - name: state
-     type: field_filter
-     explore: users
-     field: users.state
+  # filters:
+  # - name: state
+  #   type: field_filter
+  #   explore: users
+  #   field: users.state
 
   elements:
 
@@ -21,8 +21,8 @@
     measures: [users.count]
     # filters:
     #   users.state: ''
-    listen:
-       state: users.state
+    #listen:
+    #  state: users.state
     sorts: [users.count desc]
     limit: '500'
     column_limit: '50'
