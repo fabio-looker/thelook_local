@@ -128,8 +128,8 @@ view:  one {
   derived_table: {
     sql: SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Custom error for testing' ;;
     #SELECT 1 as n;;
-    #sql_trigger_value:  SELECT CURDATE() ;;
-    #indexes: ["n"]
+    sql_trigger_value:  SELECT NOW() ;;
+    indexes: ["n"]
     }
   dimension: number {
     sql: ${TABLE}.n ;;
