@@ -32,6 +32,10 @@ view: orders {
     type: count
     drill_fields: [detail*]
   }
+  measure:  boom {
+    type:  number
+    sql: 1/0 ;;
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {

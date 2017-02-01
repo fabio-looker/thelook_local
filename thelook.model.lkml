@@ -122,3 +122,17 @@ explore: user_data {
     hidden:  yes
 
  }
+
+explore:  one {}
+view:  one {
+  derived_table: {
+    sql: SELECT 1 as n;;
+    sql_trigger_value:  SELECT CURDATE() ;;
+    indexes: ["n"]
+    }
+  dimension: number {
+    sql: ${TABLE}.n ;;
+    type: number
+  }
+
+}
