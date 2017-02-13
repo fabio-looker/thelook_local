@@ -3,7 +3,7 @@
   layout: tile
   tile_size: 100
 
-  show_applied_filters: true
+  show_applied_filters: false
 
   filters:
   - name: state
