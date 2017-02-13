@@ -6,6 +6,28 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
+
+explore: date_test {
+  always_filter: {filters:{field:date_filter}}
+}
+view: date_test{
+  filter: date_filter {type:date}
+  sql_table_name: (SELECT {% date_start date_test.date_filter %} as start, {% date_start date_test.date_filter %} as start2 );;
+  dimension: start { sql: ${TABLE}.start;;}
+  dimension: start2 { sql: ${TABLE}.start2;;}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 # explore: events {
 #   join: users {
 #     type: left_outer

@@ -3,12 +3,13 @@
   layout: tile
   tile_size: 100
 
+  show_applied_filters: true
 
-  # filters:
-  # - name: state
-  #   type: field_filter
-  #   explore: users
-  #   field: users.state
+  filters:
+  - name: state
+    type: field_filter
+    explore: users
+    field: users.state
 
   elements:
 
@@ -19,10 +20,10 @@
     explore: users
     dimensions: [users.gender]
     measures: [users.count]
-    # filters:
-    #   users.state: ''
-    #listen:
-    #  state: users.state
+    filters:
+      users.state: ''
+    listen:
+     state: users.state
     sorts: [users.count desc]
     limit: '500'
     column_limit: '50'
