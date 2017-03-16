@@ -6,16 +6,43 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
+explore: gravatar_demo {}
+view: gravatar_demo {
+  derived_table: {
+    sql: SELECT 'Fabio' as name, 'fabio@looker.com' as email ;;
+  }
+  dimension: user_gravatar {
+    sql: MD5(${TABLE}.email) ;;
+    html: <img src="https://gravatar.com/avatar/{{value}}?s=80"> ;;
+  }
+  dimension: complex_user_gravatar {
+    sql: MD5(${TABLE}.email) ;;
+    html:
+    <div style="">
+      <div style="width:80px;height:80px;overflow: hidden;border-radius: 50%;">
+       <img src="//gravatar.com/avatar/{{value}}?s=80" />
+      </div>
+    <div style="width:80px;text-align:center;top:-1em">{{gravatar_demo.name}}</div>
+    </div>
+    ;;
+  }
+  dimension: name {
+    sql: ${TABLE}.name ;;
+  }
+  dimension: user_domain_logo {
+    #Redshift sql: RIGHT(${TABLE}.email,LEN(${TABLE}.email) - STRPOS(${TABLE}.email,'@')) ;;
+    #MySQL
+    sql: RIGHT(${TABLE}.email,CHAR_LENGTH(${TABLE}.email) - LOCATE('@',${TABLE}.email))  ;;
+    html:
+      <div style="width:80px;height:80px;padding-top:-20px;overflow: hidden;border-radius: 50%;">
+       <img src="//logo.clearbit.com/{{value}}?size=80" />
+      </div>
+      ;;
+  }
+}
 
-explore: date_test {
-  always_filter: {filters:{field:date_filter}}
-}
-view: date_test{
-  filter: date_filter {type:date}
-  sql_table_name: (SELECT {% date_start date_test.date_filter %} as start, {% date_start date_test.date_filter %} as start2 );;
-  dimension: start { sql: ${TABLE}.start;;}
-  dimension: start2 { sql: ${TABLE}.start2;;}
-}
+
+
 
 
 
@@ -145,17 +172,33 @@ explore: user_data {
 
  }
 
-explore:  one {}
-view:  one {
+explore:  yesno_explore {
+    from:  yesno_view
+    #sql_always_where: 1=1 --${yesno_filter_wo_sql} ;;
+
+}
+view:  yesno_view {
   derived_table: {
-    sql: SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Custom error for testing' ;;
-    #SELECT 1 as n;;
+    sql:
+      SELECT 1 as id, true as bool
+      UNION ALL
+      SELECT 2 as id, false as bool
+      UNION ALL
+      SELECT 3 as id, NULL as bool
+      ;;
     #sql_trigger_value:  SELECT NOW() ;;
     #indexes: ["n"]
-    }
-  dimension: number {
-    sql: ${TABLE}.n ;;
+  }
+  dimension: id {
+    sql: ${TABLE}.id ;;
     type: number
   }
-
+  dimension: yesno_dim {
+    sql: ${TABLE}.n ;;
+    type: yesno
+  }
+  dimension: id_as_string {
+    sql: ''||${TABLE}.id ;;
+    type: string
+  }
 }

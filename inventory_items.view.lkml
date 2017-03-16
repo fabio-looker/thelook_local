@@ -8,6 +8,7 @@ view: inventory_items {
   }
 
   dimension: cost {
+    group_label: "Cost"
     type: number
     sql: ${TABLE}.cost ;;
   }
@@ -28,6 +29,16 @@ view: inventory_items {
     type: time
     timeframes: [time, date, week, month]
     sql: ${TABLE}.sold_at ;;
+  }
+
+  dimension: cost_bucket {
+    type:  number
+    sql: CONVERT({% parameter cost_bucket_size %},signed) * FLOOR(${cost}/CONVERT({% parameter cost_bucket_size %}, signed)) ;;
+  }
+
+  filter: cost_bucket_size {
+    type: string
+    suggestions: ["5","10","25","50","100"]
   }
 
   measure: count {
