@@ -6,7 +6,9 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-explore: gravatar_demo {}
+explore: gravatar_demo {
+  persist_for: "1 hour"
+}
 view: gravatar_demo {
   derived_table: {
     sql: SELECT 'Fabio' as name, 'fabio@looker.com' as email ;;
@@ -38,6 +40,10 @@ view: gravatar_demo {
        <img src="//logo.clearbit.com/{{value}}?size=80" />
       </div>
       ;;
+  }
+  dimension: time {
+    type: string
+    sql:NOW() ;;
   }
 }
 
@@ -72,7 +78,6 @@ explore: inventory_items {
 }
 
 explore: order_items {
-  access_filter_fields: [products.department]
   #hidden: yes
 
   join: orders {

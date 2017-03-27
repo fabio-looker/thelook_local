@@ -30,7 +30,6 @@ view: orders {
 
   measure: count {
     type: count
-    sql: ${status} ;;
     drill_fields: [detail*]
     value_format: "0;0;;"
   }
