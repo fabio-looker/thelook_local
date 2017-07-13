@@ -106,6 +106,10 @@ explore: order_items {
 }
 
 explore: orders {
+  access_filter: {
+    field: users.id
+    user_attribute: thelook_user_id
+  }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
