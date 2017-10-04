@@ -2,7 +2,7 @@ view: events {
   sql_table_name: demo_db.events ;;
 
   dimension: id {
-    primary_key: yes
+    #primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
@@ -37,5 +37,9 @@ view: events {
   measure: count {
     type: count
     drill_fields: [id, users.last_name, users.first_name, users.id]
+  }
+  measure: sum {
+    type:  sum
+    sql: CAST(${value}) as float;;
   }
 }

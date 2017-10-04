@@ -61,21 +61,37 @@ view: gravatar_demo {
 
 
 
-# explore: events {
-#   join: users {
-#     type: left_outer
-#     sql_on: ${events.user_id} = ${users.id} ;;
-#     relationship: many_to_one
-#   }
-# }
-
-explore: inventory_items {
-  join: products {
+explore: events {
+  join: users {
     type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    sql_on: ${events.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  join: orders {
+    type: left_outer
+    sql_on: ${orders.user_id} = ${users.id} ;;
+    relationship: one_to_many
+  }
 }
+
+# explore: inventory_items {
+#   join: products {
+#     #type: left_outer
+#     #sql_on: ${inventory_items.product_id} = ${products.id} ;;
+#     sql: {% if _user_attributes['x'] == 'ALL'  %}
+#
+#           {% else %}
+#           INNER JOIN segments AS products ON ...
+#           {% endif %};;
+#     relationship: many_to_one
+#   }
+#   sql_always_where:
+#           {% if _user_attributes['x'] == 'ALL'  %}
+#           1=1
+#           {% else %}
+#            ${products.segment_id} = _user_attributes['x']
+#           {% endif %} ;;
+# }
 
 explore: order_items {
   #hidden: yes
@@ -83,7 +99,7 @@ explore: order_items {
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
-    relationship: many_to_one
+    relationship: one_to_many
   }
 
   join: inventory_items {
@@ -120,6 +136,7 @@ explore: orders {
     sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
     relationship: one_to_one
   }
+  sql_always_where: 1=1 --And user attribute is {{_user_attributes['thelook_user_id']}} ;;
 }
 
 explore: products {}
