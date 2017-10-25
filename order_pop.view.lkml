@@ -33,7 +33,7 @@ view:  pop_aggregates {
   sql_table_name: ${pop.SQL_TABLE_NAME} ;;
   dimension: reference_date {
     type: date
-    sql: ${pop.SQL_DATEADD}(${pop.inner_period_type}, ${within.n},{% date_start pop.date_filter %});; #MSSQL, Postgres, Redshift
+    #sql: ${pop.SQL_DATEADD}(${pop.inner_period_type}, ${within.n},{% date_start pop.date_filter %});; #MSSQL, Postgres, Redshift
     sql: ${pop.SQL_DATEADD}({% date_start pop.date_filter %}, INTERVAL ${within.n} ${pop.inner_period_type}) ;; #MySQL
   }
   #dimension: join_date {

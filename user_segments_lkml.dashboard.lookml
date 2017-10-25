@@ -1,6 +1,5 @@
 - dashboard: user_segments_lkml
   title: User Segments Lkml
-  layout: tile
   tile_size: 100
 
   show_applied_filters: false
@@ -12,7 +11,6 @@
     field: users.state
 
   elements:
-
   - name: gender_in_state
     title: "Gender breakdown in state(s)"
     type: looker_pie

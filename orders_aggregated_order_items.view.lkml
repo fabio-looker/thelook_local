@@ -13,6 +13,25 @@ view: orders_aggregated_order_items{
     primary_key: yes
     sql: ${TABLE}.order_id ;;
   }
+  dimension: explore_links {
+    sql: 'Links' ;;
+    link: {
+      label: "/Explore"
+      url: "/explore/thelook/orders"
+    }
+    link: {
+      label: "localhost/Explore"
+      url: "https://localhost:9999/explore/thelook/orders"
+    }
+    link: {
+      label: "localhost2/Explore"
+      url: "https://localhost2:9999/explore/thelook/orders"
+    }
+    link: {
+      label: "sso_tool"
+      url: "https://fabio-looker.github.io/looker_sso_tool#o=(embed_path:/embed/explore/thelook/orders)"
+    }
+  }
 
   dimension: item_count {
     type: number
@@ -37,4 +56,6 @@ view: orders_aggregated_order_items{
     type: sum
     sql:  ${order_amount};;
   }
+
+
 }

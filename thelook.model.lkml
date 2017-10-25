@@ -6,6 +6,7 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
+
 explore: gravatar_demo {
   persist_for: "1 hour"
 }
@@ -136,7 +137,6 @@ explore: orders {
     sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
     relationship: one_to_one
   }
-  sql_always_where: 1=1 --And user attribute is {{_user_attributes['thelook_user_id']}} ;;
 }
 
 explore: products {}
