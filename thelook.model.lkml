@@ -7,6 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 
+
 explore: gravatar_demo {
   persist_for: "1 hour"
 }
@@ -45,6 +46,27 @@ view: gravatar_demo {
   dimension: time {
     type: string
     sql:NOW() ;;
+  }
+  dimension: test_uri {
+    sql: '___ ___+___/___&___''___"___?___=___:___#___' ;;
+    html:
+    {{value}} (original)
+    <br />
+    {{value | encode_uri}} (encode_uri)
+    <br />
+    {{value | url_encode}} (url_encode)
+    <br />
+    {{value | escape}} (escape)
+    <br />
+    {{value | escape_once}} (escape_once)
+    <br />
+    {{value | url_escape}} (url_escape)
+    <br />
+    {{value | url_param_escape}} (url_param_escape)
+    <br />
+    {{value | h}} (h)
+
+    ;;
   }
 }
 
