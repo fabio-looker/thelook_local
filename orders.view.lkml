@@ -11,7 +11,7 @@ view: orders {
     sql: 'Links' ;;
     link: {
       label: ".../dashboards/..."
-      url: "/dashboards/1?embed_domain=fabio-looker.github.io"
+      url: "/dashboards/1?embed_domain=fabio-looker.github.io&thelook_user_id={{user_attributes['thelook_user_id']}}"
     }
     link: {
       label: "/explore/..."
