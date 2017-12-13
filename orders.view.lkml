@@ -11,20 +11,28 @@ view: orders {
     sql: 'Links' ;;
     html: <div contextmenu='_none' oncontextmenu='return false'>Links</div> ;;
     link: {
-      label: "/Explore"
+      label: "/explore/..."
       url: "/explore/thelook/orders"
     }
     link: {
-      label: "localhost/Explore"
+      label: "/explore/... (fixed)"
+      url: "/explore/thelook/orders?"
+    }
+    link: {
+      label: "...localhost/explore..."
       url: "https://localhost:9999/explore/thelook/orders"
     }
     link: {
-      label: "localhost2/Explore"
+      label: "...localhost2/explore..."
       url: "https://localhost2:9999/explore/thelook/orders"
     }
     link: {
       label: "sso_tool"
       url: "https://fabio-looker.github.io/looker_sso_tool#o=(embed_path:/embed/explore/thelook/orders)"
+    }
+    link: {
+      label: ".../dashboards/..."
+      url: "/dashboards/1"
     }
   }
 
