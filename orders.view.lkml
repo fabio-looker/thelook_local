@@ -9,7 +9,10 @@ view: orders {
 
   dimension: explore_links {
     sql: 'Links' ;;
-    html: <div contextmenu='_none' oncontextmenu='return false'>Links</div> ;;
+    link: {
+      label: ".../dashboards/..."
+      url: "/dashboards/1"
+    }
     link: {
       label: "/explore/..."
       url: "/explore/thelook/orders"
@@ -29,10 +32,6 @@ view: orders {
     link: {
       label: "sso_tool"
       url: "https://fabio-looker.github.io/looker_sso_tool#o=(embed_path:/embed/explore/thelook/orders)"
-    }
-    link: {
-      label: ".../dashboards/..."
-      url: "/dashboards/1"
     }
   }
 
