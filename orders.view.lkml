@@ -11,7 +11,7 @@ view: orders {
     sql: 'Links' ;;
     link: {
       label: ".../dashboards/..."
-      url: "/dashboards/1"
+      url: "/dashboards/1?embed_domain=fabio-looker.github.io"
     }
     link: {
       label: "/explore/..."
@@ -19,7 +19,7 @@ view: orders {
     }
     link: {
       label: "/explore/... (fixed)"
-      url: "/explore/thelook/orders?"
+      url: "/explore/thelook/orders?embed_domain=fabio-looker.github.io"
     }
     link: {
       label: "...localhost/explore..."
