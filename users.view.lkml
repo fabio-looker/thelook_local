@@ -47,6 +47,7 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    drill_fields: [email, age_tier]
   }
 
   dimension: last_name {

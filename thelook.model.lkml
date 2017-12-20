@@ -49,23 +49,16 @@ view: gravatar_demo {
   }
   dimension: test_uri {
     sql: '___ ___+___/___&___''___"___?___=___:___#___' ;;
-    html:
+    html:<div style="white-space: pre;">
     {{value}} (original)
-    <br />
     {{value | encode_uri}} (encode_uri)
-    <br />
     {{value | url_encode}} (url_encode)
-    <br />
     {{value | escape}} (escape)
-    <br />
     {{value | escape_once}} (escape_once)
-    <br />
     {{value | url_escape}} (url_escape)
-    <br />
     {{value | url_param_escape}} (url_param_escape)
-    <br />
     {{value | h}} (h)
-
+    </div>
     ;;
   }
 }
