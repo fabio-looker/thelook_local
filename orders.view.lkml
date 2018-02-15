@@ -42,6 +42,7 @@ view: orders {
   }
 
   dimension: status {
+    label: "{% if _user_attributes['thelook_user_id'] == '%' %}Status{% else %}X|Unavailable Fields{% endif %}"
     type: string
     action: {
       label: "Test action - dimension"
@@ -51,6 +52,7 @@ view: orders {
   }
 
   dimension: user_id {
+    label: "{% if _user_attributes['thelook_user_id'] == '%' %}User ID{% else %}X|Unavailable Fields{% endif %}"
     type: number
     # hidden: true
     sql: ${TABLE}.user_id ;;

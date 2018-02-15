@@ -32,6 +32,7 @@ view: gravatar_demo {
   }
   dimension: name {
     sql: ${TABLE}.name ;;
+    html: <a target="_parent" href="https://fabio-looker.github.io/looker_sso_tool/#ifr2=dashboards/1">{{value}}</a> ;;
   }
   dimension: user_domain_logo {
     #Redshift sql: RIGHT(${TABLE}.email,LEN(${TABLE}.email) - STRPOS(${TABLE}.email,'@')) ;;
