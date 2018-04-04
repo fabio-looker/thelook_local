@@ -6,7 +6,9 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-
+datagroup: users_dg {
+  max_cache_age: "1 minute"
+}
 
 explore: gravatar_demo {
   persist_for: "1 hour"
