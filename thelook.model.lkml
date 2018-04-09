@@ -8,7 +8,9 @@ include: "*.dashboard"
 
 datagroup: users_dg {
   max_cache_age: "1 minute"
+  sql_trigger: select minute(now())  ;;
 }
+
 
 explore: gravatar_demo {
   persist_for: "1 hour"
