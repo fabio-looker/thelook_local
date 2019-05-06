@@ -79,7 +79,7 @@
     type: field_filter
     default_value:
     model: thelook
-    explore: orders
+    explore: orderss
     field: users.state
     listens_to_filters: []
     allow_multiple_values: true

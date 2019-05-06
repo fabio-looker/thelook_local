@@ -24,7 +24,7 @@ view: user_data {
   }
 
   measure: count {
-    type: count
+    sql: SUM(${id}) ;;
     drill_fields: [id, users.last_name, users.first_name, users.id]
   }
 }

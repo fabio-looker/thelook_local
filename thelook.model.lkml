@@ -11,7 +11,9 @@ datagroup: users_dg {
   sql_trigger: select minute(now())  ;;
 }
 
-
+datagroup: events_datagroup {
+  sql_trigger: select date(current_timestamp());;
+}
 explore: gravatar_demo {
   persist_for: "1 hour"
 }
@@ -83,6 +85,7 @@ view: gravatar_demo {
 
 
 explore: events {
+  persist_with: events_datagroup
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -248,4 +251,19 @@ view:  yesno_view {
     sql: ''||${TABLE}.id ;;
     type: string
   }
+}
+
+explore: locked_down_users {
+  from: users
+  sql_always_where: {% if  {{_user_attributes['gender']}} == 'DEFAULT_VALUE' %}
+                      1=1
+                    {% else %}
+                      locked_down_users.gender = {{_user_attributes['gender']}}
+                    {% endif %}
+                    ;;
+  # access_filter: {
+  #   field: gender
+  #   user_attribute: test
+  # }
+
 }

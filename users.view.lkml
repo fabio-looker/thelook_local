@@ -48,6 +48,10 @@ view: users {
     type: string
     sql: ${TABLE}.gender ;;
     drill_fields: [email, age_tier]
+    link: {
+      label: "Link to other dashboard"
+      url: "/dashboards/11?State={{ _filters['state'] | url_encode }}"
+    }
   }
 
   dimension: last_name {
@@ -64,7 +68,9 @@ view: users {
     type: number
     sql: ${TABLE}.zip ;;
   }
-
+  dimension: ua {
+    sql:  {{_user_attributes['test']}} ;;
+  }
   measure: count {
     type: count
     drill_fields: [detail*]
