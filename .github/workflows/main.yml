@@ -25,6 +25,7 @@ jobs:
       # https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-status-checks
     - name: Commit changes (e.g., issues.md)
       run: |
+        git add .
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "LAMS feedback" -a
