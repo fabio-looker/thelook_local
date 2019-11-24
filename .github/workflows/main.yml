@@ -16,12 +16,8 @@ jobs:
     - name: Install LAMS
       run: npm install -g @looker/look-at-me-sideways
     - name: Run LAMS
-      with:
-        # See [PRIVACY.md](https://github.com/looker-open-source/look-at-me-sideways/blob/master/PRIVACY.md)
-        reporting: 'no'
-        reporting-user: ''
-        reporting-license-key: ''
-      run: lams --reporting=$1 --report-user=$2 --report-license_key=$3
+      # See [PRIVACY.md](https://github.com/looker-open-source/look-at-me-sideways/blob/master/PRIVACY.md)
+      run: lams --reporting=no
     #- name: Set commit status
       # TODO: How to set "status" for relevant commits? 
       # https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-status-checks
