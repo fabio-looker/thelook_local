@@ -10,9 +10,11 @@ jobs:
     #- name: Ignore pushes from action@github.com
     #- name: Ignore pushes to master?
     - name: Checkout your LookML
-      uses: actions/checkout@master
-      # ^ @master is just the version of the `checkout` action,
-      #   not the ref that will be checked out from your project
+      uses: actions/checkout@v1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
     - name: Install LAMS
       run: npm install -g @looker/look-at-me-sideways
     - name: Run LAMS
