@@ -14,10 +14,13 @@ jobs:
     - name: Install LAMS
       #run: npm install -g @looker/look-at-me-sideways
       run: |
+        ORIGINAL_DIR=$(pwd)
+        cd ~
         git clone -b feat-gh-md https://github.com/looker-open-source/look-at-me-sideways.git
         cd look-at-me-sideways
         npm install
         npm link
+        cd "$ORIGINAL_DIR"
     - name: Run LAMS
       # See [PRIVACY.md](https://github.com/looker-open-source/look-at-me-sideways/blob/master/PRIVACY.md)
       run: lams --reporting=no --output=github-job-summary
