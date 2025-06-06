@@ -29,4 +29,5 @@ jobs:
       # See [PRIVACY.md](https://github.com/looker-open-source/look-at-me-sideways/blob/master/PRIVACY.md)
       run: |
         pwd
-        lams --reporting=no --output=github-job-summary
+        ls
+        lams --reporting=no --input=**/*.lkml --output=github-job-summary
