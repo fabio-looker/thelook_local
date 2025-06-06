@@ -1,8 +1,0 @@
-{
-  "label": "Test Block",
-  "category_label":"Testing",
-  "branding": {
-    "image_uri": "https://marketplace-api.looker.com/block-icons/google-cloud.png",
-    "tagline": "Just a test."
-  },
-}

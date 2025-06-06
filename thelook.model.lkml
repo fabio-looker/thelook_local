@@ -14,6 +14,7 @@ datagroup: users_dg {
 
 explore: gravatar_demo {
   persist_for: "1 hour"
+  label: "My Gravatar Demo has a pretty long label"
 }
 view: gravatar_demo {
   derived_table: {
