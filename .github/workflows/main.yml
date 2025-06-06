@@ -14,7 +14,7 @@ jobs:
     - name: Install LAMS
       #run: npm install -g @looker/look-at-me-sideways
       run: |
-        git clone -b feat-gh-md git@github.com:looker-open-source/look-at-me-sideways.git
+        git clone -b feat-gh-md https://github.com/looker-open-source/look-at-me-sideways.git
         cd look-at-me-sideways
         npm install
         npm link
