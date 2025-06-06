@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     name: LAMS LookML Linter Job
     steps:
+    - name: Checkout your LookML
+      uses: actions/checkout@v4
+      with:
+        path: lookml-project
     - name: Setup Node
       uses: actions/setup-node@v1
       with:
@@ -14,20 +18,13 @@ jobs:
     - name: Install LAMS
       #run: npm install -g @looker/look-at-me-sideways
       run: |
-        pwd
-        ORIGINAL_DIR=$(pwd)
-        cd ~
-        pwd
         git clone -b feat-gh-md https://github.com/looker-open-source/look-at-me-sideways.git
         cd look-at-me-sideways
-        pwd
         npm install
         npm link
-        cd "$ORIGINAL_DIR"
-        pwd
+        cd ..
     - name: Run LAMS
       # See [PRIVACY.md](https://github.com/looker-open-source/look-at-me-sideways/blob/master/PRIVACY.md)
       run: |
-        pwd
-        ls
+        cd lookml-project
         lams --reporting=no --input=**/*.lkml --output=github-job-summary
