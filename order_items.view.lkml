@@ -1,5 +1,5 @@
 view: order_items {
-  sql_table_name: demo_db.order_items ;;
+  sql_table_name: `bigquery-public-data.thelook_ecommerce.order_items` ;;
 
   dimension: id {
     primary_key: yes

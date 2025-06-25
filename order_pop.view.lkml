@@ -1,6 +1,6 @@
 
 view: pop {
-  sql_table_name: orders ;; #Not actually used, but required by validator
+  # sql_table_name: orders ;; #Not actually used, but required by validator
   dimension: SQL_TABLE_NAME {sql:orders;;}
   dimension: inner_period_type {sql: week ;;}
   dimension: outer_period_type {sql: year ;;}

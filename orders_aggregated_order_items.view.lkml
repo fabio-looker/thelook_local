@@ -1,7 +1,7 @@
 view: orders_aggregated_order_items{
   derived_table: {
     sql:  SELECT order_id, count(*) as item_count, sum(sale_price) as order_amount
-          FROM order_items
+          FROM `bigquery-public-data.thelook_ecommerce.order_items`
           GROUP BY order_id
             ;;
   }
