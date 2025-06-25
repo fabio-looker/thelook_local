@@ -10,6 +10,3 @@
 #  match: "$.file.*"
 #  expr_rule:  ::match:$file_path ;;
 # }
-#
-# rule: E7 {}
-
