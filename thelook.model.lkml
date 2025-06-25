@@ -1,10 +1,10 @@
 connection: "default_bigquery_connection"
 
-# include all the views
 include: "*.view"
+include: "orders.explore.lkml"
 
 # include all the dashboards
-include: "*.dashboard"
+# include: "*.dashboard"
 
 # datagroup: users_dg {
 #   max_cache_age: "1 minute"
@@ -140,23 +140,6 @@ explore: order_items {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
-  }
-}
-
-explore: orders {
-  # access_filter: {
-  #   field: users.id
-  #   user_attribute: thelook_user_id
-  # }
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-  join: orders_aggregated_order_items {
-    type: left_outer
-    sql_on: ${orders_aggregated_order_items.order_id} = ${orders.id};;
-    relationship: one_to_one
   }
 }
 

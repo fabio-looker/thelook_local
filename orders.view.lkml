@@ -4,7 +4,7 @@ view: orders {
   dimension: id {
     #primary_key: yes
     type: number
-    sql: ${TABLE}.id ;;
+    sql: ${TABLE}.order_id ;;
   }
 
   dimension: explore_links {
@@ -62,6 +62,9 @@ view: orders {
     type: count
     drill_fields: [detail*]
     value_format: "0;0;;"
+    filters: [
+      id: "NOT NULL"
+    ]
   }
   measure:  boom {
     type:  number
