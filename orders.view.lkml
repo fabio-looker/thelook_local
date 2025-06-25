@@ -1,5 +1,5 @@
 view: orders {
-  sql_table_name: demo_db.orders ;;
+  sql_table_name: `bigquery-public-data.thelook_ecommerce.orders` ;;
 
   dimension: id {
     #primary_key: yes
@@ -11,7 +11,7 @@ view: orders {
     sql: 'Links' ;;
     link: {
       label: ".../dashboards/..."
-      url: "/dashboards/1?embed_domain=fabio-looker.github.io&thelook_user_id={{_user_attributes['thelook_user_id']}}"
+      url: "/dashboards/1?embed_domain=fabio-looker.github.io&"
     }
     link: {
       label: "/explore/..."
@@ -42,17 +42,17 @@ view: orders {
   }
 
   dimension: status {
-    label: "{% if _user_attributes['thelook_user_id'] == '%' %}Status{% else %}X|Unavailable Fields{% endif %}"
+    #label: "{% if _user_attributes['thelook_user_id'] == '%' %}Status{% else %}X|Unavailable Fields{% endif %}"
     type: string
     action: {
       label: "Test action - dimension"
-      url: "https://example.com/nosuchresource/?value={{ value }}&rendered={{ rendered }}"
+      url: "https://example.com/nosuchresource/?value={{ value }}&rendered={{ rendered_value }}"
     }
     sql: ${TABLE}.status ;;
   }
 
   dimension: user_id {
-    label: "{% if _user_attributes['thelook_user_id'] == '%' %}User ID{% else %}X|Unavailable Fields{% endif %}"
+    #label: "{% if _user_attributes['thelook_user_id'] == '%' %}User ID{% else %}X|Unavailable Fields{% endif %}"
     type: number
     # hidden: true
     sql: ${TABLE}.user_id ;;
