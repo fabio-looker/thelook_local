@@ -38,5 +38,8 @@ view: order_items {
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+    filters: [
+      id: "NOT NULL"
+    ]
   }
 }

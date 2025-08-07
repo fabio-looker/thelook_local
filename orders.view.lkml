@@ -37,8 +37,9 @@ view: orders {
 
   dimension_group: created {
     type: time
-    timeframes: [time, date, week, month]
-    sql: ${TABLE}.created_at ;;
+    datatype: date #timestamp
+    timeframes: [time, date, week, month, year]
+    sql: DATE(${TABLE}.created_at, "America/New_York") ;;
   }
 
   dimension: status {
@@ -58,6 +59,11 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: num_of_item {
+    hidden: yes
+    type: number
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -66,9 +72,20 @@ view: orders {
       id: "NOT NULL"
     ]
   }
-  measure:  boom {
-    type:  number
-    sql: 1/0 ;;
+
+  measure: total_items {
+    type: sum
+    sql: ${num_of_item} ;;
+    value_format_name: decimal_0
+  }
+
+  measure: total_items_prior_year {
+    type: period_over_period
+    based_on: total_items
+    based_on_time: created_year
+    period: year
+    kind: previous
+    value_format_name: decimal_0
   }
 
   # ----- Sets of fields for drilling ------
