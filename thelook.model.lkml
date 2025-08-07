@@ -3,6 +3,7 @@ connection: "default_bigquery_connection"
 include: "*.view"
 include: "explores/orders.explore.lkml"
 include: "explores/order_items.explore.lkml"
+include: "explores/all_the_things.explore.lkml"
 
 # include all the dashboards
 # include: "*.dashboard"
