@@ -1,7 +1,8 @@
 connection: "default_bigquery_connection"
 
 include: "*.view"
-include: "orders.explore.lkml"
+include: "explores/orders.explore.lkml"
+include: "explores/order_items.explore.lkml"
 
 # include all the dashboards
 # include: "*.dashboard"
@@ -114,34 +115,6 @@ explore: events {
 #            ${products.segment_id} = _user_attributes['x']
 #           {% endif %} ;;
 # }
-
-explore: order_items {
-  #hidden: yes
-
-  join: orders {
-    type: left_outer
-    sql_on: ${order_items.order_id} = ${orders.id} ;;
-    relationship: one_to_many
-  }
-
-  join: inventory_items {
-    type: left_outer
-    sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
-    relationship: many_to_one
-  }
-
-  join: users {
-    type: left_outer
-    sql_on: ${orders.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-
-  join: products {
-    type: left_outer
-    sql_on: ${inventory_items.product_id} = ${products.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: products {}
 
