@@ -1,3 +1,9 @@
+include: "/views/order_items.view.lkml"
+include: "/views/orders.view.lkml"
+include: "/inventory_items.view.lkml"
+include: "/views/users.view.lkml"
+include: "/products.view.lkml"
+
 explore: order_items {
   #hidden: yes
 

@@ -1,7 +1,6 @@
-include: "orders.view"
-include: "order_items.view"
-include: "users.view"
-
+include: "/views/order_items.view.lkml"
+include: "/views/orders.view.lkml"
+include: "/views/users.view.lkml"
 
 explore: orders {
   view_label: "[Orders] (Dim)"
