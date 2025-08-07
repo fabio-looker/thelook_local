@@ -27,6 +27,7 @@ view: events {
     type: number
     # hidden: true
     sql: ${TABLE}.user_id ;;
+    #ojof foreign_key_for: user_id
   }
 
   dimension: value {

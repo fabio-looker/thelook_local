@@ -3,6 +3,7 @@ view: users {
 
   dimension: id {
     #primary_key: yes
+    #ojof primary_key_name: user_id
     type: number
     sql: ${TABLE}.id ;;
   }

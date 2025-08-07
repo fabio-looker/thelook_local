@@ -1,13 +1,21 @@
+include: "/views/events.view.lkml"
+include: "/views/orders.view.lkml"
+include: "/views/users.view.lkml"
+
 explore: all_the_things {
-	extension: required
-	
-	join: orders {
+  extension: required
+  #ojof ojof: yes
 
-	}
-	join: events {
+  join: orders {
 
-	}
-	join: users {
-		
-	}
+  }
+  join: events {
+
+  }
+  join: users {
+
+  }
+  join: invalid {
+
+  }
 }
