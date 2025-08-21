@@ -79,14 +79,14 @@ view: orders {
     value_format_name: decimal_0
   }
 
-  measure: total_items_prior_year {
-    type: period_over_period
-    based_on: total_items
-    based_on_time: created_year
-    period: year
-    kind: previous
-    value_format_name: decimal_0
-  }
+  # measure: total_items_prior_year {
+  #   type: period_over_period
+  #   based_on: total_items
+  #   based_on_time: created_year
+  #   period: year
+  #   kind: previous
+  #   value_format_name: decimal_0
+  # }
 
   # ----- Sets of fields for drilling ------
   set: detail {

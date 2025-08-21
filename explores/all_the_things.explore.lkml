@@ -2,8 +2,10 @@ include: "/views/events.view.lkml"
 include: "/views/orders.view.lkml"
 include: "/views/users.view.lkml"
 
+view: none {}
 explore: all_the_things {
-  extension: required
+  from: none
+  #extension: required
   #ojof ojof: yes
 
   join: orders {
@@ -13,9 +15,6 @@ explore: all_the_things {
 
   }
   join: users {
-
-  }
-  join: invalid {
 
   }
 }

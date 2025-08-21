@@ -19,7 +19,7 @@ view: products {
 
   dimension: department {
     type: string
-    sql: ${TABLE}.department ;;
+    sql: ${TABLE}.department_TEST_CI_ERROR ;;
   }
 
   dimension: item_name {
