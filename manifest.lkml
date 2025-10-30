@@ -1,4 +1,6 @@
-#LAMS
+project_name: "thelook_fabio"
+
+# Old LAMS content for reference
 #
 # rule: NO_WINC {
 #  description: "Prohibit wildcard include to avoid increasing LookML verification time"
