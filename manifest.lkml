@@ -1,5 +1,10 @@
 #LAMS
 #rule: K7{} # Provide one `primary_key`
+#rule: NO_WINC {
+#  description: "Prohibit wildcard include to avoid increasing LookML verification time"
+#  match: "$.file.*..include.*"
+#  expr_rule:  ($not ($boolean ($match "\\*" ::match))) ;;
+# }
 
 project_name: "thelook_fabio"
 
