@@ -1,3 +1,6 @@
+#LAMS
+#rule: K7{} # Provide one `primary_key`
+
 project_name: "thelook_fabio"
 
 # Old LAMS content for reference
