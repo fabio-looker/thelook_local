@@ -13,6 +13,17 @@ include: "explores/all_the_things.explore.lkml"
 #   sql_trigger: select minute(now())  ;;
 # }
 
+explore: dynamic_user {}
+view: dynamic_user {
+  derived_table: {
+    sql: SELECT 1 AS one ;;
+  }
+  dimension: id {
+    type: number
+    value_format_name: id
+    sql: {{ _user_attributes['id'] }} ;;
+  }
+}
 
 explore: gravatar_demo {
   persist_for: "1 hour"
