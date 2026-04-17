@@ -8,10 +8,10 @@ include: "explores/all_the_things.explore.lkml"
 # include all the dashboards
 # include: "*.dashboard"
 
-# datagroup: users_dg {
-#   max_cache_age: "1 minute"
-#   sql_trigger: select minute(now())  ;;
-# }
+datagroup: users_dg {
+  max_cache_age: "1 minute"
+  sql_trigger: select date(now())  ;;
+}
 
 explore: dynamic_user {}
 view: dynamic_user {
