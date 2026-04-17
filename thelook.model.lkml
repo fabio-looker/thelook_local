@@ -136,7 +136,7 @@ explore: products {}
 # }
 
 explore: user_data {
-  # persist_with: users_dg
+  persist_with: users_dg
   join: users {
     type: left_outer
     sql_on: ${user_data.user_id} = ${users.id} ;;
