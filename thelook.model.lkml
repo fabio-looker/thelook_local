@@ -4,6 +4,7 @@ include: "*.view"
 include: "explores/orders.explore.lkml"
 include: "explores/order_items.explore.lkml"
 include: "explores/all_the_things.explore.lkml"
+include: "explores/_manual_example.explore.lkml"
 
 # include all the dashboards
 # include: "*.dashboard"
@@ -16,6 +17,7 @@ datagroup: users_dg {
 explore: dynamic_user {}
 view: dynamic_user {
   derived_table: {
+    #datagroup_trigger: users_dg
     sql: SELECT 1 AS one ;;
   }
   dimension: id {
