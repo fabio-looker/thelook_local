@@ -1,0 +1,26 @@
+version: "1.0.0"
+metadata:
+  name: "customer_support_triager"
+  description: "Routes incoming user tickets and extracts core intent."
+  author: "PromptOps Team"
+
+configuration:
+  model: "gpt-4o"
+  temperature: 0.1
+  max_tokens: 150
+  response_format: "json"
+
+system_instructions: |
+  You are an elite triage assistant for an enterprise software platform.
+  Your sole task is to parse incoming customer support tickets and output
+  a strictly structured JSON object containing intent, urgency, and product_area.
+
+  Adhere to these absolute constraints:
+  1. Classify urgency as 'low', 'medium', or 'high'.
+  2. If data loss or system downtime is mentioned, automatically upgrade to 'critical'.
+  3. Never apologize or include conversational filler.
+
+few_shot_examples:
+  - input: "The sync failed and now my entire morning dashboard is blank."
+    output: '{"intent": "data_missing", "urgency": "critical", "product_area": "analytics"}'
+    
